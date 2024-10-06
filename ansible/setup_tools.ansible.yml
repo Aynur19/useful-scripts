@@ -1,0 +1,17 @@
+---
+- name: Установка инструментов на Ubuntu
+  hosts: all
+  become: yes  
+
+  tasks:
+    - name: Установка xclip
+      apt:
+        name: xclip
+        state: present
+        update_cache: yes  
+
+    - name: Установка xsel
+      apt:
+        name: xsel
+        state: present
+        update_cache: yes  

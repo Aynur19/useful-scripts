@@ -1,0 +1,13 @@
+---
+- hosts: webserver
+  become: yes
+  tasks: 
+    # Обновление списка пакетов
+    - name: Обновить кэш пакетов
+      apt:
+        update_cache: yes
+
+    # Обновление всех установленных пакетов
+    - name: Обновить все пакеты
+      apt:
+        upgrade: dist

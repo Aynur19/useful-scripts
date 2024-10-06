@@ -1,0 +1,35 @@
+---
+- hosts: webserver
+  become: yes
+  tasks:
+    - name: Установка зависимости для Docker
+      apt:
+        name: ['apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common']
+        state: present
+
+    - name: Добавить Docker GPG key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Добавить репозиторий Docker
+      apt_repository:
+        repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu noble stable'
+        state: present
+
+    - name: Установка Docker
+      apt:
+        name: 'docker-ce'
+        state: present
+
+    - name: Добавить пользователя в группу docker
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: yes
+
+    - name: Включить и запустить Docker
+      systemd:
+        name: docker
+        enabled: yes
+        state: started

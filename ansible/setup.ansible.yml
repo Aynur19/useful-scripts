@@ -1,0 +1,12 @@
+---
+- name: Обновление пакетов
+  import_playbook: setup_update.yaml
+
+- name: Развертывание .NET SDK
+  import_playbook: setup_dotnet.yaml
+
+- name: Развертывание Docker
+  import_playbook: setup_docker.yaml
+
+- name: Развертывание PostgreSQL
+  import_playbook: setup_postgresql.yaml
