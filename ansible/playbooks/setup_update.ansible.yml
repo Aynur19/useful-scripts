@@ -1,5 +1,5 @@
 ---
-- hosts: webserver
+- hosts: servers
   become: yes
   tasks: 
     # Обновление списка пакетов

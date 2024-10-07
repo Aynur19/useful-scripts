@@ -1,5 +1,5 @@
 ---
-- hosts: webserver
+- hosts: servers
   become: yes
   tasks:
     - name: Установка зависимости для .NET

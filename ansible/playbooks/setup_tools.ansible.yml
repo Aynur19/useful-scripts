@@ -1,0 +1,28 @@
+---
+- hosts: servers    # Задайте ваш инвентарь или IP адреса хостов
+  become: true      # Необходимы root-права
+  tasks:
+    - name: Обновление списка пакетов
+      apt:
+        update_cache: yes
+
+    - name: Установка или обновление необходимых пакетов
+      apt:
+        name:
+          - openssh-server
+          - net-tools
+          - curl
+          - wget
+          - tmux
+          - fail2ban
+          - clamav
+          - rkhunter
+          - auditd
+          - nmap
+          - iproute2
+          - git
+          - zip
+          - unzip
+          - tar
+          - xz-utils
+        state: latest   # Установка последней версии пакетов
